@@ -1,0 +1,36 @@
+<!doctype HTML>
+<head>
+	<meta charset="utf-8" />
+	<title>Procedural figures</title>
+	<link type="text/css" rel="stylesheet" href="figure.css" />
+</head>
+<body>
+	<canvas id="figureCanvas" width="800" height="500" tabIndex="0"></canvas>
+	<nav>
+		<button id="figureAdd">Add</button>
+		<button id="figureDelete">Remove</button>
+		<button id="figureNext">Next</button>
+		<button id="figurePrev">Previous</button>
+		<button id="figureShow">Show</button>
+		<button id="figureHide">Hide</button>
+		<button id="figureGrow">Grow</button>
+		<button id="figureShrink">Shrink</button>
+		<button id="figureMoveRight">Right</button>
+		<button id="figureMoveLeft">Left</button>
+		<button id="figureMoveUp">Up</button>
+		<button id="figureMoveDown">Down</button>
+		<button id="figureMoveFront">To Front</button>
+		<button id="figureMoveBack">To Back</button>
+	</nav>
+</body>
+
+<script src="figure.js"></script>
+<script src="figureSet.js"></script>
+<script src="figureGui.js"></script>
+<script>
+	circle = ['circle','#00FF00',500,	300,	true,	false, 80, figureCanvas]
+	addToFigureSet(circle);
+	square = constructFigure('square','#00FFFF',120,	150,	true, 70, figureCanvas);
+	addToFigureSet(square);
+	addToFigureSet(randomFigure(figureCanvas));
+</script>
