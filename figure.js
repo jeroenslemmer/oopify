@@ -13,45 +13,33 @@ const _minSize = 10, _maxSize = 500;
 // Types of figures:
 _types = ['square','circle'];
 
-function constructFigure(type, color, x, y, visible, size, canvas){
-	var figure = [];
-	figure[_type] = type;
-	figure[_color] = color;
-
-	figure[_visible] = visible;
-	figure[_focus] = false;
-	if (size < _minSize) size = _minSize;
-	if (size > _maxSize) size = _maxSize;
-	figure[_size] = size;
-
-	figure[_canvas] = canvas;
-
-
-	if (x < 0) x = 0;
-	if (x > figure[_canvas].width - figure[_size]){
-		x = figure[_canvas].width - figure[_size];
-	}
-	figure[_x] = x;
-
-	if (y < 0) y = 0;
-	if (y > figure[_canvas].width - figure[_size]){
-		y = figure[_canvas].width - figure[_size];
-	}
-	figure[_y] = y;
-
-	return figure;
-}
-
 class Figure {
+	static minSize = 10;
+	static maxSize = 500;
+
 	constructor(type, color, x, y, visible, size, canvas){
 		this.type = type;
 		this.color = color;
-		this.x = x;
-		this.y = y;
+
+
 		this.visible = visible;
+		if (size < Figure.minSize) size = Figure.minSize;
+		if (size > Figure.maxSize) size = Figure.maxSize;
 		this.size = size;
 		this.canvas = canvas;
 		this.focus = true;
+
+		if (x < 0) x = 0;
+		if (x > this.canvas.width - this.size){
+			x = this.canvas.width - this.size;
+		}
+		this.x = x;
+
+		if (y < 0) y = 0;
+		if (y > this.canvas.height - this.size){
+			y = this.canvas.height - this.size;
+		}
+		this.y = y;
 	}
 
 	draw(){
