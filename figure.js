@@ -42,27 +42,6 @@ function constructFigure(type, color, x, y, visible, size, canvas){
 	return figure;
 }
 
-function drawFigure(figure){
-	context = figure[_canvas].getContext("2d");
-	if (figure[_visible]){
-		context.fillStyle = figure[_color];
-		if (figure[_type] == 'square'){
-			context.fillRect(figure[_x],figure[_y],figure[_size],figure[_size]);
-		} else
-		if (figure[_type] == 'circle'){
-
-			context.beginPath();
-			context.ellipse(figure[_x]+figure[_size]/2,figure[_y]+figure[_size]/2,figure[_size]/2,figure[_size]/2,0,0,Math.PI * 2);
-			context.fill();
-		}			
-	}
-	
-	if (figure[_focus]){
-		context.setLineDash([1,4]);
-		context.strokeRect(figure[_x],figure[_y],figure[_size],figure[_size]);
-	}
-}
-
 class Figure {
 	constructor(type, color, x, y, visible, size, canvas){
 		this.type = type;
@@ -72,6 +51,28 @@ class Figure {
 		this.visible = visible;
 		this.size = size;
 		this.canvas = canvas;
+		this.focus = true;
+	}
+
+	draw(){
+		var context = this.canvas.getContext("2d");
+		if (this.visible){
+			context.fillStyle = this.color;
+			if (this.type == 'square'){
+				context.fillRect(this.x, this.y, this.size, this.size);
+			} else
+			if (this.type == 'circle'){
+
+				context.beginPath();
+				context.ellipse(this.x + this.size/2,this.y+this.size/2,this.size/2,this.size/2,0,0,Math.PI * 2);
+				context.fill();
+			}			
+		}
+		
+		if (this.focus){
+			context.setLineDash([1,4]);
+			context.strokeRect(this.x,this.y,this.size,this.size);
+		}		
 	}
 
 }
