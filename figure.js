@@ -63,7 +63,7 @@ function drawFigure(figure){
 	}
 }
 
-function hideFigure(figure){
+/*function hideFigure(figure){
 
 	figure[_visible] = false;
 }
@@ -128,3 +128,4 @@ function randomFigure(canvas){
 		canvas);																														// canvas
 }
 
+*/
