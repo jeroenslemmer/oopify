@@ -63,6 +63,19 @@ function drawFigure(figure){
 	}
 }
 
+class Figure {
+	constructor(type, color, x, y, visible, size, canvas){
+		this.type = type;
+		this.color = color;
+		this.x = x;
+		this.y = y;
+		this.visible = visible;
+		this.size = size;
+		this.canvas = canvas;
+	}
+
+}
+
 /*function hideFigure(figure){
 
 	figure[_visible] = false;
